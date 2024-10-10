@@ -6,12 +6,18 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
   31337: {
-    ERC20Mock: {
-      address: "0xDFD787c807DEA8d7e53311b779BC0c6a4704D286",
+    STRANGE: {
+      address: "0xdBD296711eC8eF9Aacb623ee3F1C0922dce0D7b2",
       abi: [
         {
           type: "constructor",
-          inputs: [],
+          inputs: [
+            {
+              name: "_cantidadTokens",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
           stateMutability: "nonpayable",
         },
         {
@@ -31,7 +37,7 @@ const deployedContracts = {
           ],
           outputs: [
             {
-              name: "",
+              name: "remaining",
               type: "uint256",
               internalType: "uint256",
             },
@@ -48,14 +54,14 @@ const deployedContracts = {
               internalType: "address",
             },
             {
-              name: "value",
+              name: "amount",
               type: "uint256",
               internalType: "uint256",
             },
           ],
           outputs: [
             {
-              name: "",
+              name: "success",
               type: "bool",
               internalType: "bool",
             },
@@ -74,30 +80,12 @@ const deployedContracts = {
           ],
           outputs: [
             {
-              name: "",
+              name: "balance",
               type: "uint256",
               internalType: "uint256",
             },
           ],
           stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "burn",
-          inputs: [
-            {
-              name: "account",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [],
-          stateMutability: "nonpayable",
         },
         {
           type: "function",
@@ -111,24 +99,6 @@ const deployedContracts = {
             },
           ],
           stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "mint",
-          inputs: [
-            {
-              name: "account",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [],
-          stateMutability: "nonpayable",
         },
         {
           type: "function",
@@ -174,19 +144,19 @@ const deployedContracts = {
           name: "transfer",
           inputs: [
             {
-              name: "to",
+              name: "recipient",
               type: "address",
               internalType: "address",
             },
             {
-              name: "value",
+              name: "amount",
               type: "uint256",
               internalType: "uint256",
             },
           ],
           outputs: [
             {
-              name: "",
+              name: "success",
               type: "bool",
               internalType: "bool",
             },
@@ -198,24 +168,24 @@ const deployedContracts = {
           name: "transferFrom",
           inputs: [
             {
-              name: "from",
+              name: "sender",
               type: "address",
               internalType: "address",
             },
             {
-              name: "to",
+              name: "recipient",
               type: "address",
               internalType: "address",
             },
             {
-              name: "value",
+              name: "amount",
               type: "uint256",
               internalType: "uint256",
             },
           ],
           outputs: [
             {
-              name: "",
+              name: "success",
               type: "bool",
               internalType: "bool",
             },
@@ -239,7 +209,7 @@ const deployedContracts = {
               internalType: "address",
             },
             {
-              name: "value",
+              name: "_value",
               type: "uint256",
               indexed: false,
               internalType: "uint256",
@@ -264,7 +234,7 @@ const deployedContracts = {
               internalType: "address",
             },
             {
-              name: "value",
+              name: "_value",
               type: "uint256",
               indexed: false,
               internalType: "uint256",
@@ -272,104 +242,8 @@ const deployedContracts = {
           ],
           anonymous: false,
         },
-        {
-          type: "error",
-          name: "ERC20InsufficientAllowance",
-          inputs: [
-            {
-              name: "spender",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "allowance",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "needed",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "ERC20InsufficientBalance",
-          inputs: [
-            {
-              name: "sender",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "balance",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "needed",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "ERC20InvalidApprover",
-          inputs: [
-            {
-              name: "approver",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "ERC20InvalidReceiver",
-          inputs: [
-            {
-              name: "receiver",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "ERC20InvalidSender",
-          inputs: [
-            {
-              name: "sender",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "ERC20InvalidSpender",
-          inputs: [
-            {
-              name: "spender",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-        },
       ],
-      inheritedFunctions: {
-        allowance: "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
-        approve: "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
-        balanceOf: "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
-        decimals: "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
-        name: "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
-        symbol: "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
-        totalSupply: "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
-        transfer: "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
-        transferFrom: "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
-      },
+      inheritedFunctions: {},
     },
     DimSumVault: {
       address: "0x6d014319E0F36651997697C98Da594c7Cf235fa4",
@@ -1540,33 +1414,7 @@ const deployedContracts = {
           ],
         },
       ],
-      inheritedFunctions: {
-        allowance: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        approve: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        asset: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        balanceOf: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        convertToAssets: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        convertToShares: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        decimals: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        deposit: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        maxDeposit: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        maxMint: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        maxRedeem: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        maxWithdraw: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        mint: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        name: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        previewDeposit: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        previewMint: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        previewRedeem: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        previewWithdraw: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        redeem: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        symbol: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        totalAssets: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        totalSupply: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        transfer: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        transferFrom: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-        withdraw: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol",
-      },
+      inheritedFunctions: {},
     },
   },
 } as const;
